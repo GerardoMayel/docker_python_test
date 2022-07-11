@@ -1,3 +1,6 @@
+
+# docker image build -t test:0.0.1 /Users/mayel/fixdesktop/docker
+
 from sklearn import tree
 # DataSet
 # [size,weight,texture]
