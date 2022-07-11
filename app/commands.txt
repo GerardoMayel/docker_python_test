@@ -1,0 +1,70 @@
+
+docker images, para mostrar el listado completo de las imagenes descargadas en la maquina
+docker pull python
+--docker pull mysql
+docker pull mongo
+
+--docker pull python:3.8.8
+
+borrar:
+--docker image rm python:latest
+
+crear contendor:
+--docker create mongo
+En este caso con la imagen de mongo porque requiere pocas configuraciones
+
+ejecutar contendor:
+--docker start d79d5e27feee7fa3823f1deda0ee6c1861201124cc64b95bad1f4ac04b0b21fb
+el codigo del contenedor que acaba de ser creado
+
+Validar actividad del contenedero:
+--docker ps
+es el comando que nos dice el contenedor que esta activo
+
+Detener contenedor con ID corto de Docker
+--docker stop d79d5e27feee
+
+Muestra todos los contenedores se esten ejecutando o no
+--docker ps -a
+
+Crea contenedores con un nombre personalizado
+--docker create --name mongito mongo
+--dokcer start mongito
+
+
+********************************
+Port Mapping
+
+Host:
+3000 NodeJS
+27017 MongoDB
+3000 python
+
+
+crear contenedor con port mapping
+--docker create -p27017:27017
+el primer 27017 es el puerto de la maquina, el siguiente el puerto que vamos a mapear con nuestra maqui9na
+--docker create -p27017:27017 --name monguito mongo 
+--docker start monguito
+el puerto de la maquina lo marca al puerto del contenedor monguito, si no se pone el puerto docker lo hace
+0.0.0.0:27017->27017/tcp 
+
+--docker create -p27017 --name monguito2 mongo
+--docker start monguito2
+--docker ps
+0.0.0.0:57854->27017/tcp
+docker eligio
+
+Mostrar los logs
+--docker logs monguito
+--docker logs --follow monguito
+
+
+tres comandos a la vez, descargar imagen, crear contenedor y lo inicia y le da follow al log
+--docker run mongo
+
+lo mismo que el anterior pero no se queda esuchando los logs
+--docker run -d mongo
+
+los mismos comandos que se hicieron con docker create se pueden hacer con docker run
+docker run --name monguito -p27017:27017 -d mongo
